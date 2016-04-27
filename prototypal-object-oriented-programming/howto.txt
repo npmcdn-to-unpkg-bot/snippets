@@ -1,0 +1,12 @@
+/*
+Creating Object.create
+When JavaScript was developed, its default way of creating objects was the keyword new. Then many notable JavaScript developers campaigned for Object.create, and eventually it was included in the standard. However, some browsers don’t support Object.create (you know the one I mean). For that reason, Douglas Crockford recommends including the following code in your JavaScript applications to ensure that Object.create is created if it is not there:
+*/
+
+if (typeof Object.create !== 'function') {
+	Object.create = function (o) {
+		function F() {}
+		F.prototype = o;
+		return new F();
+	};
+}
