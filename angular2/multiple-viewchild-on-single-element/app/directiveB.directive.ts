@@ -4,7 +4,6 @@ import {Directive} from 'angular2/core';
 
   // Here, we are exporting the directive class instance as a 
   // bindable reference (for the #var syntax).
-  exportAs: "DirB"
 })
 export class DirectiveB {
   constructor() { 

@@ -17,7 +17,7 @@ import { Component } from 'angular2/core';
               </div>
             `
 })   
-export class ComponentA implements AfterViewInit {  
+export class ComponentA {  
   constructor() {
     this.testLabel = "ComA";
   }

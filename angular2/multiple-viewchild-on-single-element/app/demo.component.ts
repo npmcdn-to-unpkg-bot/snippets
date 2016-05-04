@@ -12,16 +12,12 @@ import { DirectiveC } from './directiveC.directive';
   template: `  
               <my-component
                 #testImplicit
-                #testA="ComA"
-                #testB="DirB"
-                #testC="DirC">
+                #testA="ComA">
               </my-component>
 
               <p>
                 testImplicit: {{ testImplicit.testLabel }}<br />
                 testA: {{ testA.testLabel }}<br />
-                testB: {{ testB.testLabel }}<br />
-                testC: {{ testC.testLabel }}<br />
               </p> 
   `
 })   
@@ -30,8 +26,9 @@ export class DemoComponent implements AfterViewInit {
   // Setup ViewChild queries for the #ref instances. 
   @ViewChild('testImplicit') qTestImplicit: ComponentA;
   @ViewChild('testA') qTestA: ComponentA;
-  @ViewChild('testB') qTestB: DirectiveB;
-  @ViewChild('testC') qTestC: DirectiveC;
+  @ViewChild(ComponentA) qTestA2: ComponentA;
+  @ViewChild(DirectiveB) qTestB: DirectiveB;
+  @ViewChild(DirectiveC) qTestC: DirectiveC;
 
   // I get called once after the view is initialized / checked for the
   // first time. At this point, all of the DOM-queries have been linked.
@@ -39,6 +36,7 @@ export class DemoComponent implements AfterViewInit {
     console.group("ViewChild Queries");
     console.log("qTestImplicit:", this.qTestImplicit);
     console.log("qTestA:", this.qTestA);
+    console.log("qTestA2:", this.qTestA2);
     console.log("qTestB:", this.qTestB);
     console.log("qTestC:", this.qTestC);
     console.groupEnd();
